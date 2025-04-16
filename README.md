@@ -67,12 +67,3 @@ The application provides the following main endpoints:
 - Sensitive data is encrypted at rest
 
 ## Testing
-
-Run tests using:
-
-```bash
-pytest
-```
-# pyramid-crm-shopify
-# pyramid-crm-shopify
-# pyramid-crm-shopify
