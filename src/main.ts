@@ -10,7 +10,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   const allowedOrigins = [
     configService.get("CLIENT_URL"),
-    "https://api.pyramid.ajayasok.in",
+    "https://pyramid.ajayasok.in",
     "http://localhost:4000",
   ];
 
