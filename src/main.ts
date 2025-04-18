@@ -8,8 +8,20 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   app.useGlobalPipes(new ValidationPipe());
+  const allowedOrigins = [
+    configService.get("CLIENT_URL"),
+    "https://api.pyramid.ajayasok.in",
+    "http://localhost:4000",
+  ];
+
   app.enableCors({
-    origin: configService.get("CLIENT_URL"),
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   });
 

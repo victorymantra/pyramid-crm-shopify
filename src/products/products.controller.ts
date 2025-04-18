@@ -23,7 +23,10 @@ export class ProductsController {
 
   @Get()
   findAll() {
-    return this.productsService.findAll();
+    console.log("findAll");
+    const result = this.productsService.findAll();
+    console.log(result, "result:");
+    return result;
   }
 
   @Get(":id")
