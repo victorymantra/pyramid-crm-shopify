@@ -22,7 +22,7 @@ const Products: React.FC = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:4000/products");
+      const response = await fetch("https://api.pyramid.ajayasok.in/products");
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -32,7 +32,7 @@ const Products: React.FC = () => {
 
   const handleCreate = async (values: any) => {
     try {
-      const response = await fetch("http://localhost:4000/products", {
+      const response = await fetch("https://api.pyramid.ajayasok.in/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const Products: React.FC = () => {
     if (!editingProduct) return;
     try {
       const response = await fetch(
-        `http://localhost:4000/products/${editingProduct._id}`,
+        `https://api.pyramid.ajayasok.in/products/${editingProduct._id}`,
         {
           method: "PUT",
           headers: {
@@ -77,9 +77,12 @@ const Products: React.FC = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:4000/products/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://api.pyramid.ajayasok.in/products/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       if (response.ok) {
         message.success("Product deleted successfully");
         fetchProducts();
