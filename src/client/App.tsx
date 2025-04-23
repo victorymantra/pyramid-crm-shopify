@@ -2,6 +2,7 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Products from "./components/Products";
+import OrdersDisplay from "./components/OrdersDisplay";
 
 const { Header, Content, Sider } = Layout;
 
@@ -70,7 +71,7 @@ const App: React.FC = () => {
             >
               <Routes>
                 <Route path="/products" element={<Products />} />
-                <Route path="/orders" element={<div>Orders Page</div>} />
+                <Route path="/orders" element={<OrdersDisplay />} />
                 <Route path="/customers" element={<div>Customers Page</div>} />
               </Routes>
             </Content>
