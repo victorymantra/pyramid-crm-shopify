@@ -1,9 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { ShopifyService } from "../shopify/shopify.service";
+import { OrdersService } from "@/orders/orders.service";
 
 @Injectable()
 export class WebhooksService {
-  constructor(private readonly shopifyService: ShopifyService) {}
+  constructor(
+    private readonly shopifyService: ShopifyService,
+    private readonly orderService: OrdersService
+  ) {}
 
   async handleProductUpdate(data: any) {
     // Handle product update webhook
@@ -12,7 +16,9 @@ export class WebhooksService {
 
   async handleOrderCreate(data: any) {
     // Handle order create webhook
-    return this.shopifyService.syncOrder(data.id);
+    console.log(data);
+    return this.orderService.create(data);
+    // return this.shopifyService.syncOrder(data.id);
   }
 
   async handleCustomerUpdate(data: any) {
