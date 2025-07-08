@@ -1,69 +1,92 @@
-# Pyramid CRM & Shopify Integration
+# Pyramid CRM & Shopify Integration (Prototype)
 
-This application provides integration between Pyramid CRM and Shopify, enabling bidirectional data synchronization for products, inventory, orders, and customer data.
+This repository is a **Node.js/NestJS + React prototype** for integrating Pyramid CRM with Shopify, enabling bidirectional data synchronization for products, inventory, orders, and customer data.
+
+> **Note:** This is a template/prototype for reference and demonstration purposes only. It is **not production-ready**.
 
 ## Features
 
-- Product Management
-- Inventory Synchronization
-- Order Processing
+- Product Management (CRUD, sync with Shopify)
+- Inventory Synchronization (real-time updates)
+- Order Processing (webhook-driven sync)
 - Fulfillment Management
 - Customer Data Synchronization
-- Webhook Handling
+- Shopify Webhook Handling
+- Modern React frontend (Ant Design)
 
 ## Setup
 
-1. Install dependencies:
+1. **Install dependencies:**
 
 ```bash
-pip install -r requirements.txt
+npm install
 ```
 
-2. Configure environment variables:
+2. **Configure environment variables:**
    Create a `.env` file with the following variables:
 
 ```
 SHOPIFY_API_KEY=your_api_key
 SHOPIFY_API_SECRET=your_api_secret
 SHOPIFY_SHOP_URL=your_shop_url
+SHOPIFY_ACCESS_TOKEN=your_access_token
+SHOPIFY_LOCATION_ID=your_location_id
+SCOPES=read_products,write_products,read_orders,write_orders,read_customers,write_customers
 MONGODB_URI=your_mongodb_uri
+PORT=4000
+CLIENT_URL=your_client_url
 ```
 
-3. Run the application:
+3. **Run the backend (NestJS):**
 
 ```bash
-python app.py
+npm run start:dev
+```
+
+4. **Run the frontend (React):**
+
+```bash
+npm run dev
 ```
 
 ## Project Structure
 
 ```
-├── app/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── models/
-│   ├── services/
-│   ├── utils/
-│   └── webhooks/
-├── tests/
-├── requirements.txt
+├── src/
+│   ├── app.module.ts
+│   ├── main.ts
+│   ├── products/
+│   ├── orders/
+│   ├── customers/
+│   ├── inventory/
+│   ├── shopify/
+│   ├── webhooks/
+│   └── client/ (React frontend)
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
 └── README.md
 ```
 
-## API Documentation
+## API Endpoints
 
-The application provides the following main endpoints:
-
-- `/api/products` - Product management
-- `/api/inventory` - Inventory synchronization
-- `/api/orders` - Order processing
-- `/api/customers` - Customer data management
+- `/products` - Product management
+- `/inventory` - Inventory synchronization
+- `/orders` - Order processing
+- `/customers` - Customer data management
 - `/webhooks` - Shopify webhook handling
 
 ## Security
 
 - All webhooks are secured using HMAC verification
 - API endpoints are protected with OAuth authentication
-- Sensitive data is encrypted at rest
+- Sensitive data is encrypted at rest (if implemented)
 
 ## Testing
+
+- Use `npm run test` for backend tests (Jest)
+- Use the provided Postman collection or API docs for manual testing
+
+---
+
+**For reference/demo only. Not for production use.**
